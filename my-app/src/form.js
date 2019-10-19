@@ -6,11 +6,12 @@ class Form extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            name: null,
-            email: null,
-            message: null
+            name: "",
+            email: "",
+            message: ""
         }
         this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInput(event) {
@@ -21,32 +22,71 @@ class Form extends React.Component {
         });
     }
 
+    handleSubmit() {
+        
+        if(this.state.name && this.state.email && this.state.message){
+            this.setState({
+                name: "",
+                email: "",
+                message: ""
+            });
+        } else {
+            return;
+        } 
+
+    }
+
     render() {
         return(
             
-            <form>
+            <form id="form" autoComplete="off">
+                
                 <TextField 
+                    fullWidth
                     onChange={this.handleInput}
                     id="standard-name"
                     label="Name"
                     name="name"
-                /> 
+                    style={{ margin: 8 }}
+                    placeholder="name required"
+                    value={this.state.name}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                ></TextField> 
                 <br/>
                 <TextField 
+                    fullWidth
                     onChange={this.handleInput}
                     id="standard-email"
                     label="E-Mail"
                     name="email"
+                    value={this.state.email}
+                    style={{ margin: 8 }}
+                    placeholder="e-mail required"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <br/>
                 <TextField 
+                    fullWidth
                     onChange={this.handleInput}
+                    multiline
                     id="standard-message"
                     label="Message"
                     name="message"
+                    value={this.state.message}
+                    style={{ margin: 8 }}
+                    placeholder="message required"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <br/>
-                <Button>Submit</Button>
+                <Button variant="outlined" color="primary" onClick={this.handleSubmit}>
+                    Submit
+                </Button>
             </form>
         )
     }
