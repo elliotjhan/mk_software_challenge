@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { Divider } from '@material-ui/core';
 
 class Form extends React.Component {
     constructor(props){
@@ -38,56 +39,59 @@ class Form extends React.Component {
 
     render() {
         return(
-            
-            <form id="form" autoComplete="off">
-                
-                <TextField 
-                    fullWidth
-                    onChange={this.handleInput}
-                    id="standard-name"
-                    label="Name"
-                    name="name"
-                    style={{ margin: 8 }}
-                    placeholder="name required"
-                    value={this.state.name}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                ></TextField> 
-                <br/>
-                <TextField 
-                    fullWidth
-                    onChange={this.handleInput}
-                    id="standard-email"
-                    label="E-Mail"
-                    name="email"
-                    value={this.state.email}
-                    style={{ margin: 8 }}
-                    placeholder="e-mail required"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-                <br/>
-                <TextField 
-                    fullWidth
-                    onChange={this.handleInput}
-                    multiline
-                    id="standard-message"
-                    label="Message"
-                    name="message"
-                    value={this.state.message}
-                    style={{ margin: 8 }}
-                    placeholder="message required"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-                <br/>
-                <Button variant="outlined" color="primary" onClick={this.handleSubmit}>
-                    Submit
-                </Button>
-            </form>
+            <div>
+                <h1 className="contact-header">
+                    Feel free to send me a message at elliotjhan@gmail.com
+                </h1>
+                <form id="form" autoComplete="off">
+                    <TextField 
+                        fullWidth
+                        onChange={this.handleInput}
+                        id="standard-name"
+                        label="Name"
+                        name="name"
+                        style={{ margin: 8 }}
+                        placeholder="name required"
+                        value={this.state.name}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    ></TextField> 
+                    <br/>
+                    <TextField 
+                        fullWidth
+                        onChange={this.handleInput}
+                        id="standard-email"
+                        label="E-Mail"
+                        name="email"
+                        value={this.state.email}
+                        style={{ margin: 8 }}
+                        placeholder="e-mail required"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <br/>
+                    <TextField 
+                        fullWidth
+                        onChange={this.handleInput}
+                        multiline
+                        id="standard-message"
+                        label="Message"
+                        name="message"
+                        value={this.state.message}
+                        style={{ margin: 8 }}
+                        placeholder="message required"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <br/>
+                    <Button variant="outlined" color="primary" onClick={this.handleSubmit}>
+                        Submit
+                    </Button>
+                </form>
+            </div>
         )
     }
     
