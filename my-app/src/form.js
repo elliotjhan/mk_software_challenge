@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { Divider } from '@material-ui/core';
 
 class Form extends React.Component {
     constructor(props){
@@ -25,6 +24,22 @@ class Form extends React.Component {
 
     handleSubmit() {
         
+        fetch('/api/cart.php', {
+            method: 'POST',
+            body: JSON.stringify({
+            id: parseInt(product.id),
+            count: quantity
+        }),
+            headers: {
+                'Content-Type': 'application/json'
+        }
+        })
+            .catch(error => {
+                console.error('Post Error: ', error);
+            });
+
+
+
         if(this.state.name && this.state.email && this.state.message){
             this.setState({
                 name: "",
