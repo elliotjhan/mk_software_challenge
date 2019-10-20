@@ -24,23 +24,19 @@ class Form extends React.Component {
 
     handleSubmit() {
         
-        fetch('/api/cart.php', {
-            method: 'POST',
+        if(this.state.name && this.state.email && this.state.message){
+            fetch('https://r7agqspk8k.execute-api.us-west-2.amazonaws.com/production/message', {
+            method: 'PUT',
             body: JSON.stringify({
-            id: parseInt(product.id),
-            count: quantity
-        }),
+                message: this.state.message,
+            }),
             headers: {
                 'Content-Type': 'application/json'
-        }
-        })
+            }
+            })
             .catch(error => {
-                console.error('Post Error: ', error);
+                console.error('Put Error: ', error);
             });
-
-
-
-        if(this.state.name && this.state.email && this.state.message){
             this.setState({
                 name: "",
                 email: "",
